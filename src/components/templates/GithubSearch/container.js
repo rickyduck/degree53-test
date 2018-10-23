@@ -1,32 +1,31 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { fetchHotelsRequested } from '../../../redux/hotels/actions';
-import AppComponent from './component';
+import { fetchResultsRequested } from '../../../redux/github/actions';
+import GithubSearchComponent from './component';
 
-class AppContainer extends Component {
+class GithubSearchContainer extends Component {
   constructor(props) {
     super(props);
-    if (props.hotels.list.length < 1) props.fetchHotels();
   }
   render() {
     return (
-      (this.props.hotels.loading && <div data->Loading</div>) || (
-        <AppComponent hotels={this.props.hotels} />
+      (this.props.github.loading && <div data->Loading</div>) || (
+        <GithubSearchComponent results={this.props.github.results} />
       )
     );
   }
 }
 
 const mapStateToProps = state => ({
-  hotels: state.hotels
+  github: state.github
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchHotels: () => dispatch(fetchHotelsRequested())
+  fetchResults: searchText => dispatch(fetchResultsRequested(searchText))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AppContainer);
+)(GithubSearchContainer);

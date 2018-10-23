@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import GithubSearch from './components/templates';
+import { GithubSearch } from './components/templates/GithubSearch';
 import * as serviceWorker from './serviceWorker';
 import Store from './redux/store';
 

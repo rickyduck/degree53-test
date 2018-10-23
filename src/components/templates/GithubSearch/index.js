@@ -1,2 +1,2 @@
-export { default as App } from './container';
-export { default as AppComponent } from './component';
+export { default as GithubSearch } from './container';
+export { default as GithubSearchComponent } from './component';
