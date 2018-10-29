@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { fetchResultsRequested } from '../../../redux/github/actions';
 import GithubSearchComponent from './component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class GithubSearchContainer extends Component {
   constructor(props) {
@@ -10,9 +11,10 @@ class GithubSearchContainer extends Component {
   }
   render() {
     return (
-      (this.props.github.loading && <div data->Loading</div>) || (
-        <GithubSearchComponent results={this.props.github.results} />
-      )
+      <GithubSearchComponent
+        github={this.props.github}
+        handleChange={this.props.fetchResults}
+      />
     );
   }
 }

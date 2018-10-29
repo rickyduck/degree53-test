@@ -31,7 +31,7 @@ const githubReducer = (state = defaultState, action) => {
         ...state,
         fetching: false,
         results: [],
-        error: action.error
+        error: action.data.error
       };
     default:
       return state;
