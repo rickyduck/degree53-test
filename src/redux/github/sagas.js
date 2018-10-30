@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { call, put, throttle } from 'redux-saga/effects';
+import { call, put, debounce } from 'redux-saga/effects';
 import { apiBaseEndpoint } from '../config/api';
 import * as actions from './actions';
 
@@ -18,5 +18,5 @@ export function* fetchResults(action) {
 }
 
 export function* fetchResultsSaga() {
-  yield throttle(500, actions.FETCH_RESULTS_REQUESTED, fetchResults);
+  yield debounce(500, actions.FETCH_RESULTS_REQUESTED, fetchResults);
 }

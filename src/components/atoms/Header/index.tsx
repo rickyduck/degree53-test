@@ -1,9 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { SFC } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+
+interface IProps {
+  title: string;
+  classes?: { root: any };
+}
 
 const styles = {
   root: {
@@ -11,7 +15,7 @@ const styles = {
   }
 };
 
-function Header(props) {
+const Header: SFC<IProps> = (props): JSX.Element => {
   const { classes, title } = props;
 
   return (
@@ -25,11 +29,6 @@ function Header(props) {
       </AppBar>
     </div>
   );
-}
-
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(Header);

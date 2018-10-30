@@ -1,22 +1,32 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
+
+import IResults from '../../../interfaces/IResults';
 
 import Header from '../../atoms/Header';
 import Results from '../../organisms/Results';
 
 import './styles.css';
 
-class GithubSearchComponent extends Component {
+interface IProps {
+  handleChange(value: string): void;
+  github: {
+    error: string;
+    fetching: boolean;
+    results: IResults;
+  };
+}
+
+class GithubSearchComponent extends Component<IProps> {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange = name => event => {
+  public handleChange = name => event => {
     this.props.handleChange(event.target.value);
   };
-  render() {
+  public render() {
     return (
       <div className="App">
         <Fragment>
@@ -40,9 +50,5 @@ class GithubSearchComponent extends Component {
     );
   }
 }
-
-GithubSearchComponent.propTypes = {
-  results: PropTypes.array.isRequired
-};
 
 export default GithubSearchComponent;
