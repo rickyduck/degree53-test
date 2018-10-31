@@ -1,16 +1,12 @@
 import React, { SFC } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 import Listing from '../../molecules/Listing';
-import IResults from '../../../interfaces/IResults';
+import PaperSheet from '../../organisms/PaperSheet';
 
-const styles = () => ({
-  root: {
-    flexGrow: 1
-  }
-});
+import IResults from '../../../interfaces/IResults';
 
 interface IProps {
   results: IResults;
@@ -33,8 +29,16 @@ const Results: SFC<IProps> = ({ results }): JSX.Element => {
       </section>
     );
   } else {
-    return <div>No results, please refine your search</div>;
+    return (
+      <section>
+        <PaperSheet>
+          <Typography component="p">
+            No results, please refine your search
+          </Typography>
+        </PaperSheet>
+      </section>
+    );
   }
 };
 
-export default withStyles(styles)(Results);
+export default Results;

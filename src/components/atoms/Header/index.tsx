@@ -6,7 +6,9 @@ import Typography from '@material-ui/core/Typography';
 
 interface IProps {
   title: string;
-  classes?: { root: any };
+  classes?: {
+    root: string;
+  };
 }
 
 const styles = {
